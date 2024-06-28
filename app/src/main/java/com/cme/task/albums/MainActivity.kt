@@ -7,9 +7,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.withStarted
 import com.cme.task.R
 import com.cme.task.databinding.ActivityMainBinding
+import com.cme.task.utils.ResultModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -41,9 +45,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun subscribeViewModel() {
         lifecycleScope.launch {
-            viewModel.albums.collect{
-                Log.e(mTAG, "subscribeViewModel: " + it?.feed?.copyrightInfo)
-                Log.e(mTAG, "subscribeViewModel: " + it?.feed?.albumsList?.size)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.albums.collect{ result ->
+                    when (result) {
+                        is ResultModel.Loading -> {
+                            Log.e(mTAG, "subscribeViewModel: IsLoading = " + result.isLoading)
+                        }
+                        is ResultModel.Success -> {
+                            Log.e(mTAG, "subscribeViewModel: Success Count: " + result.data?.size)
+                            Log.e(mTAG, "subscribeViewModel: Success " + result.data?.get(0)?.copyrightInfo)
+                        }
+                        is ResultModel.Failure -> {
+                            Log.e(mTAG, "subscribeViewModel: Failure" + result.code)
+                        }
+                    }
+                }
             }
         }
     }

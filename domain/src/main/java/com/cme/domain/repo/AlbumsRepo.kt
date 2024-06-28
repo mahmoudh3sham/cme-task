@@ -1,8 +1,9 @@
 package com.cme.domain.repo
 
 import com.cme.domain.model.Album
+import kotlinx.coroutines.flow.Flow
 
 
 interface AlbumsRepo {
-    suspend fun getAlbumsFromRemote(): List<Album>
+    fun getAlbumsFromRemote(): Flow<MutableList<Album>>
 }
