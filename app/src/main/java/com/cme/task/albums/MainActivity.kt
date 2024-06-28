@@ -56,7 +56,10 @@ class MainActivity : AppCompatActivity() {
                             Log.e(mTAG, "subscribeViewModel: Success " + result.data?.get(0)?.copyrightInfo)
                         }
                         is ResultModel.Failure -> {
-                            Log.e(mTAG, "subscribeViewModel: Failure" + result.code)
+                            Log.e(mTAG, "subscribeViewModel: Failure " + result.code)
+                            if (result.code == 502){
+                                //TODO: handle retry
+                            }
                         }
                     }
                 }

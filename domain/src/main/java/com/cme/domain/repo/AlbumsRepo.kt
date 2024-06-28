@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface AlbumsRepo {
-    fun getAlbumsFromRemote(): Flow<MutableList<Album>>
+    fun getAlbums(): Flow<MutableList<Album>>
 }

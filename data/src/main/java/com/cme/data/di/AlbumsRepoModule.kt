@@ -1,5 +1,6 @@
 package com.cme.data.di
 
+import android.net.ConnectivityManager
 import com.cme.data.remote.ApiService
 import com.cme.data.repo.AlbumsRepoImpl
 import com.cme.domain.repo.AlbumsRepo
@@ -13,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object AlbumsRepoModule {
 
     @Provides
-    fun provideAlbumsRepo(apiService: ApiService): AlbumsRepo{
-        return AlbumsRepoImpl(apiService)
+    fun provideAlbumsRepo(apiService: ApiService, cm: ConnectivityManager): AlbumsRepo{
+        return AlbumsRepoImpl(apiService, cm)
     }
 }
