@@ -1,23 +1,27 @@
-package com.cme.data.repo
+package com.cme.data.mapper
 
 import com.cme.data.local.entity.AlbumDbEntity
 import com.cme.data.local.entity.GenreDbEntity
-import com.cme.data.remote.entity.AlbumEntity
-import com.cme.data.remote.entity.AlbumsResponse
+import com.cme.data.remote.dto.AlbumDto
+import com.cme.data.remote.dto.AlbumsResponseDto
 import com.cme.domain.model.Album
 import com.cme.domain.model.Genre
 import io.realm.kotlin.ext.realmListOf
 
 object AlbumMapper {
 
-    fun mapAlbumRemoteDataEntityToAlbumDomainModel(albumsResponse: AlbumsResponse?) : MutableList<Album>{
+    /**
+     * @mapAlbumDtoToAlbumModel is responsible for mapping the remote Album Dto response from remote
+     * to Album domain model for viewModel usage.
+     */
+    fun mapAlbumDtoToAlbumModel(albumsResponseDto: AlbumsResponseDto?) : MutableList<Album>{
 
-        if (albumsResponse?.feed?.albumsList.isNullOrEmpty()) return mutableListOf()
+        if (albumsResponseDto?.feed?.albumsList.isNullOrEmpty()) return mutableListOf()
 
-        val copyRightInfo = albumsResponse?.feed?.copyrightInfo ?: ""
+        val copyRightInfo = albumsResponseDto?.feed?.copyrightInfo ?: ""
 
         val albums = mutableListOf<Album>()
-        albumsResponse?.feed?.albumsList?.forEach { it ->
+        albumsResponseDto?.feed?.albumsList?.forEach { it ->
             val genres = mutableListOf<Genre>()
             it.genreEntities?.forEach {
                 val genre = Genre(it.genreId, it.genreName, it.genreUrl)
@@ -41,7 +45,11 @@ object AlbumMapper {
 
     }
 
-    fun mapAlbumLocalDataEntityToAlbumDomainModel(albumsDbEntity: List<AlbumDbEntity>) : MutableList<Album>{
+    /**
+     * @mapAlbumEntityToAlbumModel is responsible for mapping the local Album Entity from local
+     * to Album domain model for viewModel offline usage.
+     */
+    fun mapAlbumEntityToAlbumModel(albumsDbEntity: List<AlbumDbEntity>) : MutableList<Album>{
 
         if (albumsDbEntity.isEmpty()) return mutableListOf()
 
@@ -70,7 +78,11 @@ object AlbumMapper {
 
     }
 
-    fun mapRemoteAlbumToLocalDbAlbum(remoteAlbum: AlbumEntity, mCopyRightInfo: String?) : AlbumDbEntity {
+    /**
+     * @mapAlbumDtoToAlbumEntity is responsible for mapping the remote Album Dto from remote
+     * to Album Entity model for caching in database.
+     */
+    fun mapAlbumDtoToAlbumEntity(remoteAlbum: AlbumDto, mCopyRightInfo: String?) : AlbumDbEntity {
         val localGenres = realmListOf<GenreDbEntity>()
         remoteAlbum.genreEntities?.forEach { remoteGenre->
             val localGenre = GenreDbEntity()

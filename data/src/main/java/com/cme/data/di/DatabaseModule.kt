@@ -1,7 +1,5 @@
 package com.cme.data.di
 
-import com.cme.data.remote.entity.AlbumEntity
-import com.cme.data.remote.entity.GenreEntity
 import com.cme.data.local.RealmLocalManager
 import com.cme.data.local.entity.AlbumDbEntity
 import com.cme.data.local.entity.GenreDbEntity

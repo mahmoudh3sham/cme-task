@@ -1,8 +1,8 @@
-package com.cme.data.remote.entity
+package com.cme.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class AlbumEntity(
+data class AlbumDto(
     val id: String?,
     val artistName: String?,
     val artistUrl: String?,
@@ -10,5 +10,5 @@ data class AlbumEntity(
     val releaseDate: String?,
     @SerializedName("url") val albumUrl: String?,
     @SerializedName("artworkUrl100") val albumImage: String?,
-    @SerializedName("genres") val genreEntities: List<GenreEntity>?,
+    @SerializedName("genres") val genreEntities: List<GenreDto>?,
 )

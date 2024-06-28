@@ -1,8 +1,8 @@
 package com.cme.data.local
 
 import com.cme.data.local.entity.AlbumDbEntity
-import com.cme.data.remote.entity.AlbumsResponse
-import com.cme.data.repo.AlbumMapper
+import com.cme.data.remote.dto.AlbumsResponseDto
+import com.cme.data.mapper.AlbumMapper
 import io.realm.kotlin.Realm
 import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.ext.query
@@ -19,10 +19,10 @@ class RealmLocalManager (private val realm: Realm) {
             }
     }
 
-    suspend fun insertAlbumsIntoDb(albumsResponse: AlbumsResponse) {
-        val mCopyRightInfo = albumsResponse.feed.copyrightInfo ?: ""
-        albumsResponse.feed.albumsList?.forEach { remoteAlbum ->
-            val localAlbum = AlbumMapper.mapRemoteAlbumToLocalDbAlbum(remoteAlbum, mCopyRightInfo)
+    suspend fun insertAlbumsIntoDb(albumsResponseDto: AlbumsResponseDto) {
+        val mCopyRightInfo = albumsResponseDto.feed.copyrightInfo ?: ""
+        albumsResponseDto.feed.albumsList?.forEach { remoteAlbum ->
+            val localAlbum = AlbumMapper.mapAlbumDtoToAlbumEntity(remoteAlbum, mCopyRightInfo)
             realm.write {
                 copyToRealm(localAlbum, updatePolicy = UpdatePolicy.ALL)
             }
