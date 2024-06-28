@@ -1,4 +1,4 @@
-package com.cme.task.presentation.theme
+package com.cme.task.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

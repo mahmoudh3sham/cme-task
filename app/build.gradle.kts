@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -20,6 +20,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -79,8 +80,8 @@ dependencies {
     //data reference for di
     implementation(project(":data"))
     //hilt
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     //ViewModel
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
@@ -94,7 +95,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.13.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
 
-    implementation("io.mockk:mockk:1.12.0")
+    testImplementation ("io.mockk:mockk:1.12.0")
 
 
 }

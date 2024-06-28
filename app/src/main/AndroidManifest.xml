@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".presentation.MyApp"
+        android:name=".albums.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,12 +17,12 @@
         android:theme="@style/Theme.Task"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity2"
+            android:name=".albums.MainActivity2"
             android:exported="false"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.Task" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".albums.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

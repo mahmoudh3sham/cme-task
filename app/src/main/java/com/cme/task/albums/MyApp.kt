@@ -1,8 +1,7 @@
-package com.cme.task.presentation
+package com.cme.task.albums
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApp : Application(){
-}
+class MyApp : Application()
