@@ -1,6 +1,6 @@
 package com.cme.data.remote
 
-import com.cme.domain.entity.AlbumsResponse
+import com.cme.data.entity.AlbumsResponse
 import retrofit2.http.GET
 
 interface ApiService {

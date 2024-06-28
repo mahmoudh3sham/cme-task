@@ -1,8 +1,8 @@
-package com.cme.domain.entity
+package com.cme.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Genre(
+data class GenreEntity(
     val genreId: String?,
     @SerializedName("name") val genreName: String?,
     @SerializedName("url") val genreUrl: String?

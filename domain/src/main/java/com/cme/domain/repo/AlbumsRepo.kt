@@ -1,7 +1,8 @@
 package com.cme.domain.repo
 
-import com.cme.domain.entity.AlbumsResponse
+import com.cme.domain.model.Album
+
 
 interface AlbumsRepo {
-    suspend fun getAlbumsFromRemote(): AlbumsResponse
+    suspend fun getAlbumsFromRemote(): List<Album>
 }

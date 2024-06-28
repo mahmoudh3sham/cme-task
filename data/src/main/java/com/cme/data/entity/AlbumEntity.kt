@@ -1,8 +1,8 @@
-package com.cme.domain.entity
+package com.cme.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Album(
+data class AlbumEntity(
     val id: String?,
     val artistName: String?,
     val artistUrl: String?,
@@ -10,5 +10,5 @@ data class Album(
     val releaseDate: String?,
     @SerializedName("url") val albumUrl: String?,
     @SerializedName("artworkUrl100") val albumImage: String?,
-    val genres: List<Genre>?
+    @SerializedName("genres") val genreEntities: List<GenreEntity>?
 )
