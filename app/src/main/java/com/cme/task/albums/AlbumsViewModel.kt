@@ -3,7 +3,7 @@ package com.cme.task.albums
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cme.data.entity.AlbumsResponse
+import com.cme.data.remote.entity.AlbumsResponse
 import com.cme.domain.model.Album
 import com.cme.domain.usecase.GetAlbumsUseCase
 import com.cme.task.utils.ErrorManager

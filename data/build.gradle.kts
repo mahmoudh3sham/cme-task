@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("dagger.hilt.android.plugin")
+    id ("io.realm.kotlin")
     id ("kotlin-kapt")
 }
 
@@ -45,6 +46,9 @@ dependencies {
 
     //domain reference
     implementation(project(":domain"))
+
+    //Realm Database
+    implementation("io.realm.kotlin:library-base:1.16.0")
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.48")

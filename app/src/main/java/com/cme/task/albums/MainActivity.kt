@@ -52,8 +52,11 @@ class MainActivity : AppCompatActivity() {
                             Log.e(mTAG, "subscribeViewModel: IsLoading = " + result.isLoading)
                         }
                         is ResultModel.Success -> {
-                            Log.e(mTAG, "subscribeViewModel: Success Count: " + result.data?.size)
-                            Log.e(mTAG, "subscribeViewModel: Success " + result.data?.get(0)?.copyrightInfo)
+                            if (!result.data.isNullOrEmpty()){
+                                Log.e(mTAG, "subscribeViewModel: Success Count: " + result.data.size)
+                                Log.e(mTAG, "subscribeViewModel: Success " + result.data[0].copyrightInfo)
+                                binding.hello.text = result.data.size.toString()
+                            }
                         }
                         is ResultModel.Failure -> {
                             Log.e(mTAG, "subscribeViewModel: Failure " + result.code)

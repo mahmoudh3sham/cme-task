@@ -1,4 +1,4 @@
-package com.cme.data.entity
+package com.cme.data.remote.entity
 
 import com.google.gson.annotations.SerializedName
 
