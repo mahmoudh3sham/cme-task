@@ -1,14 +1,8 @@
 # Albums App Task @CME
 An android app that displays a list of albums and details about them.
 
-<table>
-  <tr>
-    <td>Demo Video</td>
-  </tr>
-  <tr>
-    <td>[![Watch the video](https://img.youtube.com/vi/aj27jTVTR2A/maxresdefault.jpg)](https://www.youtube.com/watch?v=aj27jTVTR2A)</td>
-  </tr>
- </table>
+## Demo Video
+[![Watch the Demo](https://img.youtube.com/vi/aj27jTVTR2A/0.jpg)](https://www.youtube.com/watch?v=aj27jTVTR2A)
 
 ## Modularization
 Project follows the (modularization by layer) approach, it contains three main modules:
