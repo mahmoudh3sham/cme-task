@@ -9,7 +9,7 @@ import com.cme.task.utils.ErrorManager
 import com.cme.task.utils.ResultModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,7 +19,11 @@ class AlbumsViewModel @Inject constructor(private val albumsUseCase: GetAlbumsUs
     private val mTAG = "AlbumsViewModel"
 
     private val _albums: MutableStateFlow<ResultModel<MutableList<Album>?>> = MutableStateFlow(ResultModel.Loading(true))
-    val albums: StateFlow<ResultModel<MutableList<Album>?>> = _albums
+    val albums = _albums.asStateFlow()
+
+    init {
+        getAlbums()
+    }
 
     fun getAlbums(){
         viewModelScope.launch {
@@ -32,7 +36,8 @@ class AlbumsViewModel @Inject constructor(private val albumsUseCase: GetAlbumsUs
                 }
                 .collect{ response ->
                     _albums.emit(ResultModel.Loading(isLoading = false))
-                    _albums.emit(ResultModel.Success(data = response))
+                    if (response.isEmpty()) _albums.emit(ResultModel.Failure(code = 502)) //first run without connection case
+                    else _albums.emit(ResultModel.Success(data = response))
                 }
         }
     }

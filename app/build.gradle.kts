@@ -75,6 +75,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
     //domain reference
     implementation(project(":domain"))
     //data reference for di
@@ -82,9 +84,13 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.7.1")
 
     //ViewModel
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")

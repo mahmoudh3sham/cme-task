@@ -1,4 +1,4 @@
-package com.cme.task.albums
+package com.cme.task
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
