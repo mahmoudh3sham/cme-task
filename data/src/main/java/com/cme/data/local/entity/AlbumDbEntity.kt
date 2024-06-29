@@ -1,6 +1,5 @@
 package com.cme.data.local.entity
 
-import com.google.gson.annotations.SerializedName
 import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.RealmList
 import io.realm.kotlin.types.RealmObject

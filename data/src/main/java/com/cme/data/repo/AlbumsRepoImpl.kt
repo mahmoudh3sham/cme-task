@@ -16,10 +16,10 @@ class AlbumsRepoImpl (private val apiService: ApiService, private val localDataM
 
     override fun getAlbums(): Flow<MutableList<Album>>{
         return if (ConnectivityChecker.isNetworkAvailable(cm)) {
-            Log.e(mTAG, "subscribeViewModel: Yes Connection")
+            Log.e(mTAG, "AlbumsRepoImpl: Connection Available")
             getAlbumsFromRemote()
         } else {
-            Log.e(mTAG, "subscribeViewModel: No Connection")
+            Log.e(mTAG, "AlbumsRepoImpl: No Connection")
             getAlbumsFromLocal()
         }
     }

@@ -1,6 +1,5 @@
 package com.cme.task.albums
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,6 +34,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,8 +49,6 @@ import com.cme.task.utils.ResultModel
 import com.cme.task.utils.components.CircularProgress
 import com.cme.task.utils.components.Retry
 
-private const val TAG = "AlbumsScreen"
-
 @Composable
 fun AlbumsScreen(
     onAlbumClick: (Album) -> Unit = {},
@@ -61,19 +58,16 @@ fun AlbumsScreen(
 
     when (albumsState) {
         is ResultModel.Loading -> {
-            Log.e(TAG, "AlbumsScreen: Loading")
             CircularProgress()
         }
 
         is ResultModel.Success -> {
             val albums: MutableList<Album> = albumsState.data ?: mutableListOf()
             AlbumsGrid(albums, viewModel, onAlbumClick)
-
-            Log.e(TAG, "AlbumsScreen: Success")
         }
 
         is ResultModel.Failure -> {
-            if (albumsState.code == 502 /*connection error code*/){
+            if (albumsState.code == 502 /*connection error code*/) {
                 Retry(viewModel)
             }
         }
@@ -89,9 +83,9 @@ fun AlbumsGrid(
 ) {
     val pullToRefreshState = rememberPullToRefreshState()
 
-    Box (
+    Box(
         modifier = Modifier.nestedScroll(pullToRefreshState.nestedScrollConnection)
-    ){
+    ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(bottom = 60.dp, start = 16.dp, end = 16.dp),
@@ -118,7 +112,7 @@ fun AlbumsGrid(
 
 
         //Pull to refresh
-        if (pullToRefreshState.isRefreshing){
+        if (pullToRefreshState.isRefreshing) {
             LaunchedEffect(true) {
                 viewModel.getAlbums()
             }
@@ -127,9 +121,9 @@ fun AlbumsGrid(
             mutableStateOf(false)
         }
         LaunchedEffect(isRefreshing) {
-            if (isRefreshing){
+            if (isRefreshing) {
                 pullToRefreshState.startRefresh()
-            }else {
+            } else {
                 pullToRefreshState.endRefresh()
             }
         }
@@ -173,7 +167,7 @@ fun AlbumItem(album: Album) {
                         )
                 )
 
-                Box (
+                Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(12.dp),
