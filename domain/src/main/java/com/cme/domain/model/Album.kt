@@ -1,7 +1,9 @@
 package com.cme.domain.model
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Album(
     val id: String?,
     val artistName: String?,
@@ -12,4 +14,4 @@ data class Album(
     val albumImage: String?,
     val genre: List<Genre>?,
     val copyrightInfo: String?
-): Serializable
+): Parcelable

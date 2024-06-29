@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.cme.task.utils.AlbumsAppNavigation
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import com.cme.domain.model.Album
+import com.cme.task.details.AlbumDetailsScreen
+import com.cme.task.navigation.AlbumsAppNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

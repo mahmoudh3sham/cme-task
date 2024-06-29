@@ -1,9 +1,11 @@
 package com.cme.domain.model
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Genre(
     val genreId: String?,
     val genreName: String?,
     val genreUrl: String?
-): Serializable
+): Parcelable
