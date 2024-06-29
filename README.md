@@ -6,7 +6,7 @@ An android app that displays a list of albums and details about them.
     <td>Demo Video</td>
   </tr>
   <tr>
-    <td>[![Watch the demo](demo/screenshot.jpeg)](demo/demo.mp4)</td>
+    <td>[![Watch the video](https://img.youtube.com/vi/aj27jTVTR2A/maxresdefault.jpg)](https://www.youtube.com/watch?v=aj27jTVTR2A)</td>
   </tr>
  </table>
 
