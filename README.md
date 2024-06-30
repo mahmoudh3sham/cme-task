@@ -39,10 +39,10 @@ project uses **DaggerHilt** for dependency injection.
 * project uses **Navigation Compose** for handling navigation between screens. 
 
 ## Using the App
-Launching the app for the first time without internet connection will lead to raise connection error along with a retry button to retry if connection is back,
-If user already has and internet connection, app will fetch 100 albums from Apple RSS API (https://rss.applemarketingtools.com), data is stored in offline database using
-Realm database so that if user opens the app without internet connection, app will retrieve albums from that offline database otherwise it will refresh the current
-data from the remote when user swipe to refresh or opens the app with internet connection.
+Launching the app for the first time without internet connection will lead to raise a connection error along with a **retry** button to retry if the connection is back,
+If user already has an internet connection, app will fetch 100 albums from Apple RSS API (https://rss.applemarketingtools.com), data is stored in offline database using
+Realm database so that if user opens the app without internet connection, app will retrieve albums from that offline database otherwise it will retrieve the 
+data from the remote api feed, data will be updated when user swipe to refresh or opens the app again with internet connection.
 
 User can browse albums list in the first screen, when clicking on any album app will navigate to the clicked album's details screen offering the user more data about 
 that album in a friendly experience.
