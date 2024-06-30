@@ -20,7 +20,7 @@ Project uses the following Android Architecture Components:
 * StateFlow
 
 ## Network
-Project uses the following tool to handle remote fetching
+Project uses the following tools to handle remote fetching
 * Retrofit (with logging-interceptor to log network response).
 * Coroutines with Flow to handle data fetching asynchronously.
 
@@ -33,7 +33,7 @@ project uses **DaggerHilt** for dependency injection.
 
 ## Design Tools
 * project uses **Jetpack Compose** for screens design along with Material3.
-* project uses **Coil** for asynchronous and lazy image fetching.
+* project uses **Coil & Glide (Experimental)** for asynchronous and lazy image fetching.
 
 ## Navigation
 * project uses **Navigation Compose** for handling navigation between screens. 

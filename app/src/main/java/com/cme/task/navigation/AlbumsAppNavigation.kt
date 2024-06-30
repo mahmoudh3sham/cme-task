@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.cme.domain.model.Album
 import com.cme.task.albums.AlbumsScreen
 import com.cme.task.details.AlbumDetailsScreen
+import com.cme.task.utils.Constants
 import com.cme.task.utils.Screen
 
 @Composable
@@ -18,7 +19,7 @@ fun AlbumsAppNavigation() {
             AlbumsScreen(
                 onAlbumClick = { album ->
                     navController.currentBackStackEntry?.savedStateHandle?.set(
-                        key = "album",
+                        key = Constants.ALBUM_NAV_KEY,
                         value = album
                     )
                     navController.navigate(
@@ -30,7 +31,7 @@ fun AlbumsAppNavigation() {
         composable(
             route = Screen.AlbumDetails.route
         ){
-            val album = navController.previousBackStackEntry?.savedStateHandle?.get<Album>("album")
+            val album = navController.previousBackStackEntry?.savedStateHandle?.get<Album>(Constants.ALBUM_NAV_KEY)
             AlbumDetailsScreen(
                 album
             )

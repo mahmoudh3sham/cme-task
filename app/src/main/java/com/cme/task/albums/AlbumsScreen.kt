@@ -34,14 +34,17 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
+import com.bumptech.glide.integration.compose.CrossFade
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.cme.domain.model.Album
 import com.cme.task.R
 import com.cme.task.utils.ImageHQ
@@ -135,8 +138,11 @@ fun AlbumsGrid(
     }
 }
 
+
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun AlbumItem(album: Album) {
+    val context = LocalContext.current
     Box {
         Card(
             modifier = Modifier
@@ -148,12 +154,13 @@ fun AlbumItem(album: Album) {
         ) {
             Box(modifier = Modifier.fillMaxHeight()) {
 
-                AsyncImage(
+                GlideImage(
                     model = ImageHQ.getImageHQ(album.albumImage),
                     contentDescription = album.name,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,
-                    error = painterResource(id = R.drawable.error_img)
+                    failure = placeholder(R.drawable.error_img),
+                    transition = CrossFade
                 )
 
                 //Gradient Black background

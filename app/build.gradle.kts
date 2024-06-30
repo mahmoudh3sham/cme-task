@@ -77,6 +77,9 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.6.0")
+    //Glide
+    implementation ("com.github.bumptech.glide:compose:1.0.0-beta01")
+
     //domain reference
     implementation(project(":domain"))
     //data reference for di
@@ -92,19 +95,10 @@ dependencies {
     //Navigation
     implementation ("androidx.navigation:navigation-compose:2.7.1")
 
-    //ViewModel
+    //Lifecycle comps
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-
     implementation ("androidx.activity:activity-ktx:1.8.2")
-
-    implementation ("androidx.recyclerview:recyclerview:1.3.2")
-
-    implementation ("com.github.bumptech.glide:glide:4.13.0")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
-
-    testImplementation ("io.mockk:mockk:1.12.0")
-
 
 }
