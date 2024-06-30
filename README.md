@@ -38,6 +38,9 @@ project uses **DaggerHilt** for dependency injection.
 ## Navigation
 * project uses **Navigation Compose** for handling navigation between screens. 
 
+## Testing
+* project uses **Junit** for unit testing.
+
 ## Using the App
 Launching the app for the first time without internet connection will lead to raise a connection error along with a **retry** button to retry if the connection is back,
 If user already has an internet connection, app will fetch 100 albums from Apple RSS API (https://rss.applemarketingtools.com), data is stored in offline database using
