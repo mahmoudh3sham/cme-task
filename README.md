@@ -39,7 +39,7 @@ project uses **DaggerHilt** for dependency injection.
 * project uses **Navigation Compose** for handling navigation between screens. 
 
 ## Testing
-* project uses **Junit** for unit testing.
+* project uses **JUnit** for unit testing.
 
 ## Using the App
 Launching the app for the first time without internet connection will lead to raise a connection error along with a **retry** button to retry if the connection is back,
